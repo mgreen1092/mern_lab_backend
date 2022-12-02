@@ -40,11 +40,11 @@ router.put('/:id', async (req, res, next)=> {
 router.delete('/:id', async (req, res, next)=> {
     try { 
         const deleteLibrary = await Library.findOneAndDelete({_id: req.params.id})
-        // if (deleteLibrary) {
-        //     res.sendStatus(204)
-        // } else {
-        //     res.sendStatus(404)
-        // }
+        if (deleteLibrary) {
+            res.sendStatus(204)
+        } else {
+            res.sendStatus(404)
+        }
     } catch (err) {
         next(err)
     }
