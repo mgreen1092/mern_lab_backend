@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
-const mongoURI =
-  process.env.NODE_ENV === 'production'
-    ? process.env.MONGODB_URI
-    : 'mongodb://localhost/virtual-library';
+const mongoURI = 'mongodb+srv://hiramr97:mongodb@cluster0.16xvdfk.mongodb.net/virtual-library'
+//process.env.DATABASE_URL
+//const db = mongoose.connection;
 
 mongoose
-  .connect('mongodb://localhost/virtual-library')
+  .connect(mongoURI)
   .then((instance) =>
     console.log(`Connected to db: ${instance.connections[0].name}`)
   )
