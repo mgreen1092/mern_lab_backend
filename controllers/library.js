@@ -13,7 +13,7 @@ router.get('/', async (req, res, next)=> {
     }
 })
 
-router.post('/', async (req, res, next)=> {
+router.post('/create/', async (req, res, next)=> {
     try { 
         const newLibrary = await Library.create(req.body)
         res.status(201).json(newLibrary)
@@ -22,8 +22,9 @@ router.post('/', async (req, res, next)=> {
     }
 })
 
-router.put('/:id', async (req, res, next)=> {
+router.put('/edit/:id', async (req, res, next)=> {
   try {  
+    console.log('reached edit functionality')
     const updateLibrary = await Library.findOneAndUpdate({_id: req.params.id}, req.body, {
         new: true
     })
@@ -37,7 +38,7 @@ router.put('/:id', async (req, res, next)=> {
     }
 })
 
-router.delete('/:id', async (req, res, next)=> {
+router.delete('/delete/:id', async (req, res, next)=> {
     try { 
         const deleteLibrary = await Library.findOneAndDelete({_id: req.params.id})
         if (deleteLibrary) {
