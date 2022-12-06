@@ -28,11 +28,6 @@ router.put('/edit/:id', async (req, res, next)=> {
     const updateLibrary = await Library.findOneAndUpdate({_id: req.params.id}, req.body, {
         new: true
     })
-    // if(updateLibrary) {
-    //     res.json(updateLibrary)
-    // } else (
-    //     res.sendStatus(404)
-    // )
     } catch (err) {
         next(err)
     }
@@ -41,11 +36,6 @@ router.put('/edit/:id', async (req, res, next)=> {
 router.delete('/delete/:id', async (req, res, next)=> {
     try { 
         const deleteLibrary = await Library.findOneAndDelete({_id: req.params.id})
-        if (deleteLibrary) {
-            res.sendStatus(204)
-        } else {
-            res.sendStatus(404)
-        }
     } catch (err) {
         next(err)
     }
